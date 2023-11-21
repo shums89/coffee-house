@@ -9,7 +9,7 @@
 // &display=swap - добавить при подключении через плагин
 
 // Подключить если есть локальные файлы шрифтов
-//@import "fonts/fonts";
+@import 'fonts/fonts';
 
 // Подключение иконочных шрифтов
 // Подключить если есть файл иконочного шрифта
@@ -17,11 +17,18 @@
 
 //====================================================================
 // Шрифт по умолчанию
-$fontFamily: '';
+$fontFamily: 'Inter';
 $fontSize: rem(14); // где 14(px) - размер шрифта по умолчанию из макета
 
 // Основные цвета
-$mainColor: #000; // Цвет шрифта по умолчанию
+$mainColor: #403f3d; // Цвет шрифта по умолчанию
+$textColorLight: #e1d4c9;
+$textColorAccent: #b0907a;
+$bgColorBody: #e1d4c9;
+$bgColorContainer: #2d2d2d;
+$bgColorBackdrop: rgba(64, 63, 61, 0.8);
+$borderColorLight: #c1b6ad;
+$borderColorDark: #665f55;
 
 //====================================================================
 // НАСТРОЙКИ
@@ -56,17 +63,18 @@ $responsiveType: 1;
 
 html {
   scroll-behavior: smooth;
+  background: $bgColorBody;
 }
 
 body {
-  // // Скролл заблокирован
-  // .lock & {
-  //   overflow: hidden;
-  //   touch-action: none;
-  // }
-  // // Сайт загружен
-  // .loaded & {
-  // }
+  // Скролл заблокирован
+  .lock & {
+    overflow: hidden;
+    touch-action: none;
+  }
+  // Сайт загружен
+  .loaded & {
+  }
 }
 
 //====================================================================
