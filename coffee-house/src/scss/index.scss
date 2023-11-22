@@ -70,17 +70,7 @@
   }
   // .favorite__title
   &__title {
-    font-family: 'Inter';
-    font-size: rem(60);
-    font-weight: 600;
-    line-height: 125%;
-    color: $mainColor;
     text-align: center;
-    margin-bottom: rem(40);
-    & span {
-      font-style: italic;
-      color: $textColorAccent;
-    }
   }
   // .favorite__slider
   &__slider {
