@@ -25,7 +25,7 @@ $mainColor: #403f3d; // Цвет шрифта по умолчанию
 $textColorLight: #e1d4c9;
 $textColorAccent: #b0907a;
 $bgColorBody: #e1d4c9;
-$bgColorContainer: #2d2d2d;
+$bgColorContainer: #665f55;
 $bgColorBackdrop: rgba(64, 63, 61, 0.8);
 $borderColorLight: #c1b6ad;
 $borderColorDark: #665f55;
@@ -158,6 +158,9 @@ body {
 
 .page {
   // .page__promo
-  &__promo {
+  // .page__favorite
+  &__promo,
+  &__favorite {
+    margin-bottom: rem(100);
   }
 }
