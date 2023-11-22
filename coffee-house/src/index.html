@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 @@include('html/_head.htm',{
 "title":"Главная"
 })
@@ -8,6 +8,20 @@
   <div class="wrapper">
     @@include('html/_header.htm',{})
     <main class="page">
+      <section class="page__promo promo">
+        <div class="promo__container">
+          <div class="promo__content">
+            <h1 class="promo__title"><span>Enjoy</span> premium coffee at our charming cafe</h1>
+            <p class="promo__text">With its inviting atmosphere and delicious coffee options, the Coffee House Resource is a popular destination for coffee lovers and those seeking a warm and inviting space to enjoy their favorite beverage.</p>
+            <a class="promo__link" href="menu.html">
+              Menu
+              <svg>
+                <use href="@img/icons/sprite.svg#coffee-cup"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
     @@include('html/_footer.htm',{})
   </div>

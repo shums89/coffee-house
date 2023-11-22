@@ -1,0 +1,63 @@
+.promo {
+  // .promo__container
+  &__container {
+  }
+  // .promo__content
+  &__content {
+    height: rem(644);
+    padding: rem(100);
+    background: url('@img/enjoy/bg.jpg') center / 100% no-repeat;
+    border-radius: rem(40);
+  }
+  // .promo__title
+  &__title {
+    max-width: rem(530);
+    margin-bottom: rem(40);
+    font-family: 'Inter';
+    font-size: rem(72);
+    font-weight: 600;
+    line-height: 105%;
+    color: $textColorLight;
+    & span {
+      font-style: italic;
+      color: $textColorAccent;
+    }
+  }
+  // .promo__text
+  &__text {
+    max-width: rem(530);
+    margin-bottom: rem(40);
+    font-family: 'Inter';
+    font-size: rem(16);
+    font-weight: 400;
+    line-height: 150%;
+    color: $textColorAccent;
+  }
+  // .promo__link
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // gap: rem(8);
+    width: rem(200);
+    height: rem(64);
+    border-radius: rem(100);
+    background-color: $bgColorBody;
+    font-family: 'Inter';
+    font-size: rem(16);
+    font-weight: 600;
+    line-height: 150%;
+    & svg {
+      width: 0;
+      height: rem(20);
+      margin-left: 0;
+      opacity: 0;
+      transition: all 0.3s ease 0s;
+    }
+    &:hover svg {
+      width: rem(20);
+      margin-left: rem(8);
+      opacity: 1;
+    }
+  }
+}

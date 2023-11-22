@@ -154,4 +154,10 @@ body {
 @import 'footer';
 
 // Подключение стилей отдельных страниц
-@import 'home';
+@import 'index';
+
+.page {
+  // .page__promo
+  &__promo {
+  }
+}
