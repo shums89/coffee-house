@@ -70,13 +70,13 @@
   }
   // .favorite__title
   &__title {
+    margin-bottom: rem(40);
     text-align: center;
   }
   // .favorite__slider
   &__slider {
   }
 }
-
 .favorite-slider {
   position: relative;
   display: flex;
@@ -207,6 +207,7 @@
   }
   // .about__text
   &__text {
+    margin-bottom: rem(40);
   }
   // .about__images
   &__images {
@@ -233,5 +234,80 @@
     &:hover img {
       transform: scale(1);
     }
+  }
+}
+
+//====================================================================
+
+.mobile {
+  // .mobile__container
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(rem(420), 1fr));
+    gap: rem(100);
+  }
+  // .mobile__content
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: rem(40);
+  }
+  // .mobile__title
+  &__title {
+  }
+  // .mobile__text
+  &__text {
+    font-family: 'Inter';
+    font-size: rem(16);
+    font-weight: 400;
+    line-height: 150%;
+  }
+  // .mobile__buttons
+  &__buttons {
+    display: flex;
+    column-gap: rem(20);
+  }
+  // .mobile__button
+  &__button {
+  }
+  // .mobile__img
+  &__img {
+  }
+}
+.mobile-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: rem(8);
+  width: rem(200);
+  height: rem(64);
+  border: rem(1) solid $borderColorDark;
+  border-radius: rem(100);
+  // .mobile-button_iphone
+  &_iphone {
+  }
+  // .mobile-button_android
+  &_android {
+  }
+  // .mobile-button__img
+  &__img {
+  }
+  // .mobile-button__content
+  &__content {
+  }
+  // .mobile-button__subtitle
+  &__subtitle {
+    font-family: 'Inter';
+    font-size: rem(10);
+    font-weight: 600;
+    line-height: 140%;
+  }
+  // .mobile-button__title
+  &__title {
+    font-family: 'Inter';
+    font-size: rem(16);
+    font-weight: 600;
+    line-height: 150%;
   }
 }

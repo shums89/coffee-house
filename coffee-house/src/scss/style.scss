@@ -160,9 +160,11 @@ body {
   // .page__promo
   // .page__favorite
   // .page__about
+  // .page__mobile
   &__promo,
   &__favorite,
-  &__about {
+  &__about,
+  &__mobile {
     margin-bottom: rem(100);
   }
 }
