@@ -284,6 +284,13 @@
   height: rem(64);
   border: rem(1) solid $borderColorDark;
   border-radius: rem(100);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  &:hover {
+    color: $textColorLight;
+    background-color: $bgColorContainer;
+    border: none;
+  }
   // .mobile-button_iphone
   &_iphone {
   }
@@ -292,12 +299,15 @@
   }
   // .mobile-button__img
   &__img {
+    width: rem(36);
+    height: rem(36);
   }
   // .mobile-button__content
   &__content {
   }
   // .mobile-button__subtitle
   &__subtitle {
+    margin-bottom: rem(2);
     font-family: $fontFamily;
     font-size: rem(10);
     font-weight: 600;
