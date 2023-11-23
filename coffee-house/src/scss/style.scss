@@ -159,8 +159,10 @@ body {
 .page {
   // .page__promo
   // .page__favorite
+  // .page__about
   &__promo,
-  &__favorite {
+  &__favorite,
+  &__about {
     margin-bottom: rem(100);
   }
 }
