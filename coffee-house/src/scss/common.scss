@@ -1,7 +1,7 @@
 // Заголовки, общие БЄМ блоки и проче...
 
 .section__title {
-  font-family: 'Inter';
+  font-family: $fontFamily;
   font-size: rem(60);
   font-weight: 600;
   line-height: 125%;
