@@ -136,6 +136,11 @@
     padding-top: rem(5);
     padding-bottom: rem(5);
     max-height: rem(34);
+    .html-menu & {
+      cursor: default;
+      user-select: none;
+      pointer-events: none;
+    }
     &:after {
       content: '';
       position: absolute;
@@ -148,7 +153,8 @@
       opacity: 0;
       transition: all 0.3s ease 0s;
     }
-    &:hover:after {
+    &:hover:after,
+    .html-menu &:after {
       width: 100%;
       opacity: 1;
     }
