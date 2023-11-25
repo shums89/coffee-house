@@ -155,16 +155,19 @@ body {
 
 // Подключение стилей отдельных страниц
 @import 'index';
+@import 'menu';
 
 .page {
   // .page__promo
   // .page__favorite
   // .page__about
   // .page__mobile
+  // .page__section-menu
   &__promo,
   &__favorite,
   &__about,
-  &__mobile {
+  &__mobile,
+  &__section-menu {
     margin-bottom: rem(100);
   }
 }

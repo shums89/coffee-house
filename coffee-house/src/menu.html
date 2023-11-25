@@ -8,6 +8,201 @@
   <div class="wrapper">
     @@include('html/_header.htm',{})
     <main class="page">
+      <section class="page__section-menu section-menu">
+        <div class="section-menu__container">
+          <h1 class="section-menu__title section-title">Behind each of our cups hides an <span>amazing surprise</span></h1>
+          <div class="section-menu__tabs menu-tabs">
+            <div class="menu-tabs__header">
+              <div class="menu-tabs__header-item menu-tabs-switch active">
+                <div class="menu-tabs-switch__image"><img width="16" height="24" data-src="@img/menu/icon-coffee.png" alt="coffee"></div>
+                Cofee
+              </div>
+              <div class="menu-tabs__header-item menu-tabs-switch">
+                <div class="menu-tabs-switch__image"><img width="16" height="24" data-src="@img/menu/icon-tea.png" alt="tea"></div>
+                Tea
+              </div>
+              <div class="menu-tabs__header-item menu-tabs-switch">
+                <div class="menu-tabs-switch__image"><img width="16" height="24" data-src="@img/menu/icon-dessert.png" alt="dessert"></div>
+                Dessert
+              </div>
+            </div>
+            <div class="menu-tabs__content">
+              <div class="menu-tabs__content-item menu-content-item">
+                <ul class="menu-content-item__list products">
+                  <li class="products__item">
+                    @@include('html/_product-card.htm',{
+                    "title":"Irish coffee",
+                    "description":"Fragrant black coffee with Jameson Irish whiskey and whipped milk",
+                    "image":"coffee-1.jpg",
+                    "price":"$7.00"
+                    })
+                  </li>
+                  <li class="products__item">
+                    @@include('html/_product-card.htm',{
+                    "title":"Kahlua coffee",
+                    "description":"Classic coffee with milk and Kahlua liqueur under a cap of frothed milk",
+                    "image":"coffee-2.jpg",
+                    "price":"$7.00"
+                    })
+                  </li>
+                  <li class="products__item">
+                    @@include('html/_product-card.htm',{
+                    "title":"Honey raf",
+                    "description":"Espresso with frothed milk, cream and aromatic honey",
+                    "image":"coffee-3.jpg",
+                    "price":"$5.50"
+                    })
+                  </li>
+                  <li class="products__item">
+                    @@include('html/_product-card.htm',{
+                    "title":"Ice cappuccino",
+                    "description":"Cappuccino with soft thick foam in summer version with ice",
+                    "image":"coffee-4.jpg",
+                    "price":"$5.00"
+                    })
+                  </li>
+                  <li class="products__item">
+                    @@include('html/_product-card.htm',{
+                    "title":"Espresso",
+                    "description":"Classic black coffee",
+                    "image":"coffee-5.jpg",
+                    "price":"$4.50"
+                    })
+                  </li>
+                  <li class="products__item">
+                    @@include('html/_product-card.htm',{
+                    "title":"Latte",
+                    "description":"Espresso coffee with the addition of steamed milk and dense milk foam",
+                    "image":"coffee-6.jpg",
+                    "price":"$5.50"
+                    })
+                  </li>
+                  <li class="products__item">
+                    @@include('html/_product-card.htm',{
+                    "title":"Latte macchiato",
+                    "description":"Espresso with frothed milk and chocolate",
+                    "image":"coffee-7.jpg",
+                    "price":"$5.50"
+                    })
+                  </li>
+                  <li class="products__item">
+                    @@include('html/_product-card.htm',{
+                    "title":"Coffee with cognac",
+                    "description":"Fragrant black coffee with cognac and whipped cream",
+                    "image":"coffee-8.jpg",
+                    "price":"$6.50"
+                    })
+                  </li>
+                </ul>
+              </div>
+              <div class="menu-tabs__content-item menu-content-item">
+                <ul class="menu-content-item__list products">
+                  <li class="products__item">
+                    @@include('html/_product-card.htm',{
+                    "title":"Moroccan",
+                    "description":"Fragrant black tea with the addition of tangerine, cinnamon, honey, lemon and mint",
+                    "image":"tea-1.jpg",
+                    "price":"$4.50"
+                    })
+                  </li>
+                  <li class="products__item">
+                    @@include('html/_product-card.htm',{
+                    "title":"Ginger",
+                    "description":"Original black tea with fresh ginger, lemon and honey",
+                    "image":"tea-2.jpg",
+                    "price":"$5.00"
+                    })
+                  </li>
+                  <li class="products__item">
+                    @@include('html/_product-card.htm',{
+                    "title":"Ginger",
+                    "description":"Original black tea with fresh ginger, lemon and honey",
+                    "image":"tea-3.jpg",
+                    "price":"$5.00"
+                    })
+                  </li>
+                  <li class="products__item">
+                    @@include('html/_product-card.htm',{
+                    "title":"Sea buckthorn",
+                    "description":"Toning sweet black tea with sea buckthorn, fresh thyme and cinnamon",
+                    "image":"tea-4.jpg",
+                    "price":"$5.50"
+                    })
+                  </li>
+                </ul>
+              </div>
+              <div class="menu-tabs__content-item menu-content-item">
+                <ul class="menu-content-item__list products">
+                  <li class="products__item">
+                    @@include('html/_product-card.htm',{
+                    "title":"Marble cheesecake",
+                    "description":"Philadelphia cheese with lemon zest on a light sponge cake and red currant jam",
+                    "image":"dessert-1.jpg",
+                    "price":"$3.50"
+                    })
+                  </li>
+                  <li class="products__item">
+                    @@include('html/_product-card.htm',{
+                    "title":"Red velvet",
+                    "description":"Layer cake with cream cheese frosting",
+                    "image":"dessert-2.jpg",
+                    "price":"$4.00"
+                    })
+                  </li>
+                  <li class="products__item">
+                    @@include('html/_product-card.htm',{
+                    "title":"Cheesecakes",
+                    "description":"Soft cottage cheese pancakes with sour cream and fresh berries and sprinkled with powdered sugar",
+                    "image":"dessert-3.jpg",
+                    "price":"$4.50"
+                    })
+                  </li>
+                  <li class="products__item">
+                    @@include('html/_product-card.htm',{
+                    "title":"Creme brulee",
+                    "description":"Delicate creamy dessert in a caramel basket with wild berries",
+                    "image":"dessert-4.jpg",
+                    "price":"$4.00"
+                    })
+                  </li>
+                  <li class="products__item">
+                    @@include('html/_product-card.htm',{
+                    "title":"Pancakes",
+                    "description":"Tender pancakes with strawberry jam and fresh strawberries",
+                    "image":"dessert-5.jpg",
+                    "price":"$4.50"
+                    })
+                  </li>
+                  <li class="products__item">
+                    @@include('html/_product-card.htm',{
+                    "title":"Honey cake",
+                    "description":"Classic honey cake with delicate custard",
+                    "image":"dessert-6.jpg",
+                    "price":"$4.50"
+                    })
+                  </li>
+                  <li class="products__item">
+                    @@include('html/_product-card.htm',{
+                    "title":"Chocolate cake",
+                    "description":"Cake with hot chocolate filling and nuts with dried apricots",
+                    "image":"dessert-7.jpg",
+                    "price":"$5.50"
+                    })
+                  </li>
+                  <li class="products__item">
+                    @@include('html/_product-card.htm',{
+                    "title":"Black forest",
+                    "description":"A combination of thin sponge cake with cherry jam and light chocolate mousse",
+                    "image":"dessert-8.jpg",
+                    "price":"$6.50"
+                    })
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
     @@include('html/_footer.htm',{})
   </div>
