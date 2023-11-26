@@ -58,7 +58,7 @@
     &:hover {
       color: $mainColor;
       background-color: $bgColorBody;
-      border: none;
+      border: rem(1) solid $bgColorBody;
     }
     & svg {
       width: rem(24);

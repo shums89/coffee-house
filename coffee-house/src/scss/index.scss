@@ -126,7 +126,7 @@
     }
     &:not(:disabled):hover {
       color: $textColorLight;
-      border: none;
+      border: rem(1) solid $bgColorContainer;
       background-color: $bgColorContainer;
     }
     & > svg {
@@ -291,7 +291,7 @@
   &:hover {
     color: $textColorLight;
     background-color: $bgColorContainer;
-    border: none;
+    border: rem(1) solid $bgColorContainer;
   }
   // .mobile-button_iphone
   &_iphone {
