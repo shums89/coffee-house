@@ -536,7 +536,7 @@ html {
 .footer__social-link:hover {
   color: #403f3d;
   background-color: #e1d4c9;
-  border: none;
+  border: 0.0625rem solid #e1d4c9;
 }
 
 .footer__social-link svg {
@@ -748,7 +748,7 @@ html {
 
 .favorite-slider__nav-button:not(:disabled):hover {
   color: #e1d4c9;
-  border: none;
+  border: 0.0625rem solid #665f55;
   background-color: #665f55;
 }
 
@@ -949,7 +949,7 @@ html {
 .mobile-button:hover {
   color: #e1d4c9;
   background-color: #665f55;
-  border: none;
+  border: 0.0625rem solid #665f55;
 }
 
 .mobile-button__img {
