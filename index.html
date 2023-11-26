@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" class="html-home">
+
+<head>
+	<title>Главная</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20231126221744">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<div class="header__menu menu">
+					<a href="/" class="header__logo"><img src="img/logo.svg" alt="logo"></a>
+					<nav class="menu__body">
+						<ul class="menu__list">
+							<li class="menu__item"><a class="menu__link" href="/#favorite">Favorite coffee</a></li>
+							<li class="menu__item"><a class="menu__link" href="/#about">About</a></li>
+							<li class="menu__item"><a class="menu__link" href="/#mobile">Mobile app</a></li>
+							<li class="menu__item"><a class="menu__link" href="#contacts">Contact us</a></li>
+						</ul>
+						<a class="menu__link menu__link_menu" href="menu.html">
+							Menu
+							<svg width="20" height="20">
+								<use href="img/icons/sprite.svg#coffee-cup"></use>
+							</svg>
+						</a>
+					</nav>
+					<button class="menu__icon icon-menu" type="button"></button>
+				</div>
+			</div>
+		</header>
+		<main class="page">
+			<section class="page__promo promo">
+				<div class="promo__container">
+					<div class="promo__content">
+						<h1 class="promo__title"><span>Enjoy</span> premium coffee at our charming cafe</h1>
+						<p class="promo__text">With its inviting atmosphere and delicious coffee options, the Coffee House Resource is a popular destination for coffee lovers and those seeking a warm and inviting space to enjoy their favorite beverage.</p>
+						<a class="promo__link" href="menu.html">
+							Menu
+							<svg width="20" height="20">
+								<use href="img/icons/sprite.svg#coffee-cup"></use>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</section>
+			<section class="page__favorite favorite" id="favorite">
+				<div class="favorite__container">
+					<h2 class="favorite__title section-title">Choose your <span>favorite</span> coffee</h2>
+					<div class="favorite__slider favorite-slider">
+						<div class="favorite-slider__wrapper">
+							<ul class="favorite-slider__swiper">
+								<li class="favorite-slider__slide favorite-slide favorite-slide_active">
+									<a class="favorite-slide__link" href="#">
+										<div class="favorite-slide__image-ibg"><picture><source data-srcset="img/favorite/slide-1.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  src="img/loader.gif" data-src="img/favorite/slide-1.png" alt="Slide 1"></picture></div>
+										<div class="favorite-slide__content">
+											<h3 class="favorite-slide__title">S’mores Frappuccino</h3>
+											<p class="favorite-slide__text">This new drink takes an espresso and mixes it with brown sugar and cinnamon before being topped with oat milk.</p>
+											<p class="favorite-slide__price">$5.50</p>
+										</div>
+									</a>
+								</li>
+								<li class="favorite-slider__slide favorite-slide">
+									<a class="favorite-slide__link" href="#">
+										<div class="favorite-slide__image-ibg"><picture><source data-srcset="img/favorite/slide-2.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  src="img/loader.gif" data-src="img/favorite/slide-2.png" alt="Slide 2"></picture></div>
+										<div class="favorite-slide__content">
+											<h3 class="favorite-slide__title">Caramel Macchiato</h3>
+											<p class="favorite-slide__text">Fragrant and unique classic espresso with rich caramel-peanut syrup, with cream under whipped thick foam.</p>
+											<p class="favorite-slide__price">$5.00</p>
+										</div>
+									</a>
+								</li>
+								<li class="favorite-slider__slide favorite-slide">
+									<a class="favorite-slide__link" href="#">
+										<div class="favorite-slide__image-ibg"><picture><source data-srcset="img/favorite/slide-3.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  src="img/loader.gif" data-src="img/favorite/slide-3.png" alt="Slide 3"></picture></div>
+										<div class="favorite-slide__content">
+											<h3 class="favorite-slide__title">Ice coffee</h3>
+											<p class="favorite-slide__text">A popular summer drink that tones and invigorates. Prepared from coffee, milk and ice.</p>
+											<p class="favorite-slide__price">$4.50</p>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="favorite-slider__pagination">
+							<span class="_active"></span>
+							<span></span>
+							<span></span>
+						</div>
+						<button class="favorite-slider__nav-button favorite-slider__nav-button_prev" type="button">
+							<svg width="12" height="12">
+								<use href="img/icons/sprite.svg#arrow-slider"></use>
+							</svg>
+						</button>
+						<button class="favorite-slider__nav-button favorite-slider__nav-button_next" type="button">
+							<svg width="12" height="12">
+								<use href="img/icons/sprite.svg#arrow-slider"></use>
+							</svg>
+						</button>
+					</div>
+				</div>
+			</section>
+			<section class="page__about about" id="about">
+				<div class="about__container">
+					<h2 class="about__title visually-hidden">About</h2>
+					<p class="about__text section-title">Resource is <span>the perfect and cozy place</span> where you can enjoy a variety of hot beverages, relax, catch up with friends, or get some work done.</p>
+					<div class="about__images">
+						<div class="about__image-ibg about__image-ibg_big"><picture><source data-srcset="img/about/about-1.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  src="img/loader.gif" data-src="img/about/about-1.jpg" alt="About 1"></picture></div>
+						<div class="about__image-ibg"><picture><source data-srcset="img/about/about-2.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  src="img/loader.gif" data-src="img/about/about-2.jpg" alt="About 2"></picture></div>
+						<div class="about__image-ibg"><picture><source data-srcset="img/about/about-3.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  src="img/loader.gif" data-src="img/about/about-3.jpg" alt="About 3"></picture></div>
+						<div class="about__image-ibg about__image-ibg_big"><picture><source data-srcset="img/about/about-4.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  src="img/loader.gif" data-src="img/about/about-4.jpg" alt="About 4"></picture></div>
+					</div>
+				</div>
+			</section>
+			<section class="page__mobile mobile" id="mobile">
+				<div class="mobile__container">
+					<div class="mobile__content">
+						<h2 class="mobile__title section-title"><span>Download</span> our apps to start ordering</h2>
+						<p class="mobile__text">Download the Resource app today and experience the comfort of ordering your favorite coffee from wherever you are</p>
+						<div class="mobile__buttons">
+							<a class="mobile__button mobile-button mobile-button_iphone" href="#">
+								<svg class="mobile-button__img" width="36" height="36">
+									<use href="img/icons/sprite.svg#iphone"></use>
+								</svg>
+								<div class="mobile-button__content">
+									<p class="mobile-button__subtitle">Available on the</p>
+									<p class="mobile-button__title">App Store</p>
+								</div>
+							</a>
+							<a class="mobile__button mobile-button mobile-button_android" href="#">
+								<svg class="mobile-button__img" width="36" height="36">
+									<use href="img/icons/sprite.svg#android"></use>
+								</svg>
+								<div class="mobile-button__content">
+									<p class="mobile-button__subtitle">Available on</p>
+									<p class="mobile-button__title">Google Play</p>
+								</div>
+							</a>
+						</div>
+					</div>
+					<picture><source data-srcset="img/mobile/mobile.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="mobile__img" src="img/loader.gif" data-src="img/mobile/mobile.png" alt="Mobile app"></picture>
+				</div>
+			</section>
+		</main>
+		<footer class="footer">
+			<div class="footer__container">
+				<div class="footer__wrapper">
+					<div class="footer__column footer__column_socials">
+						<h2 class="footer__title">Sip, Savor, Smile.<br><span>It’s coffee time!</span></h2>
+						<ul class="footer__socials">
+							<li class="footer__social-item">
+								<a class="footer__social-link" href="#">
+									<svg width="24" height="24">
+										<use href="img/icons/sprite.svg#twitter"></use>
+									</svg>
+								</a>
+							</li>
+							<li class="footer__social-item">
+								<a class="footer__social-link" href="#">
+									<svg width="24" height="24">
+										<use href="img/icons/sprite.svg#instagram"></use>
+									</svg>
+								</a>
+							</li>
+							<li class="footer__social-item">
+								<a class="footer__social-link" href="#">
+									<svg width="24" height="24">
+										<use href="img/icons/sprite.svg#facebook"></use>
+									</svg>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="footer__column footer__column_contacts" id="contacts">
+						<h3 class="footer__subtitle">Contact us</h3>
+						<ul class="footer__contacts">
+							<li class="footer__contact-item">
+								<a class="footer__contact-link" href="https://maps.app.goo.gl/zJCBySCGkES6pxUm6" target="_blank">
+									<svg width="20" height="20">
+										<use href="img/icons/sprite.svg#pin"></use>
+									</svg>8558 Green Rd., LA
+								</a>
+							</li>
+							<li class="footer__contact-item">
+								<a class="footer__contact-link" href="tel:16035550123">
+									<svg width="20" height="20">
+										<use href="img/icons/sprite.svg#phone"></use>
+									</svg>+1 (603) 555-0123
+								</a>
+							</li>
+							<li class="footer__contact-item">
+								<svg width="20" height="20">
+									<use href="img/icons/sprite.svg#clock"></use>
+								</svg>Mon-Sat: 9:00 AM – 23:00 PM
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<script src="js/app.min.js?_v=20231126221744"></script>
+</body>
+
+</html>
