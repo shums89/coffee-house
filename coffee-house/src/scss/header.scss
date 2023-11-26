@@ -98,14 +98,19 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    column-gap: rem(30);
+    align-items: center;
+    column-gap: rem(32);
     margin-left: rem(40);
     margin-right: rem(40);
   }
   // .menu__item
   &__item {
+  }
+  // .menu__link
+  &__link {
     position: relative;
-    padding: 5px;
+    padding: rem(4);
+    margin-bottom: rem(4);
     &:after {
       content: '';
       position: absolute;
@@ -119,49 +124,33 @@
       transition: all 0.3s ease 0s;
     }
     &:hover:after {
-      width: 100%;
+      width: calc(100% - rem(8));
       opacity: 1;
     }
-  }
-  // .menu__link
-  &__link {
-  }
-  // /menu__menu
-  &__menu {
-    position: relative;
-    flex: 0 0 rem(72);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: rem(5);
-    padding-bottom: rem(5);
-    max-height: rem(34);
-    .html-menu & {
-      cursor: default;
-      user-select: none;
-      pointer-events: none;
-    }
-    &:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      right: 50%;
-      width: 0;
-      height: rem(2);
-      background-color: $mainColor;
-      transform: translateX(50%);
-      opacity: 0;
-      transition: all 0.3s ease 0s;
-    }
-    &:hover:after,
-    .html-menu &:after {
-      width: 100%;
-      opacity: 1;
-    }
-    & svg {
-      align-self: start;
-      width: rem(20);
-      height: rem(20);
+    // .menu__link_menu
+    &_menu {
+      flex: 0 0 rem(80);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: rem(10);
+      max-height: rem(34);
+      margin-right: rem(-5);
+      .html-menu & {
+        cursor: default;
+        user-select: none;
+        pointer-events: none;
+      }
+      & svg {
+        align-self: start;
+        width: rem(20);
+        height: rem(20);
+      }
+      &:hover:after,
+      .html-menu &:after {
+        width: calc(100% - rem(8));
+        opacity: 1;
+      }
     }
   }
 }

@@ -1,5 +1,6 @@
 .footer {
   color: $textColorLight;
+  margin-bottom: rem(40);
   // .footer__container
   &__container {
   }
@@ -22,7 +23,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: rem(40);
+      gap: rem(38);
     }
   }
   // .footer__title
@@ -86,6 +87,7 @@
   &__contact-item {
     display: flex;
     align-items: center;
+    margin-bottom: rem(4);
     & svg {
       margin-right: rem(8);
     }
@@ -94,11 +96,10 @@
   &__contact-link {
     position: relative;
     display: inline-block;
-    padding-bottom: rem(4);
     &:after {
       content: '';
       position: absolute;
-      bottom: 0;
+      bottom: rem(-4);
       left: 50%;
       width: 0;
       height: rem(1);
