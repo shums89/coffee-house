@@ -34,6 +34,7 @@
     line-height: 125%;
     margin-bottom: rem(40);
     & span {
+      font-style: italic;
       color: $textColorAccent;
     }
   }
