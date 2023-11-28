@@ -505,6 +505,7 @@ html {
 }
 
 .footer__title span {
+  font-style: italic;
   color: #b0907a;
 }
 
