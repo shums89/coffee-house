@@ -51,6 +51,11 @@
     background-color: $bgColorContainer;
     border: rem(1) solid $bgColorContainer;
   }
+  &.active {
+    cursor: default;
+    user-select: none;
+    pointer-events: none;
+  }
   // .menu-tabs-switch__image
   &__image {
     display: flex;
