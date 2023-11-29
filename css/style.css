@@ -1030,6 +1030,15 @@ html {
   border: 0.0625rem solid #665f55;
 }
 
+.menu-tabs-switch.active {
+  cursor: default;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+}
+
 .menu-tabs-switch__image {
   display: -webkit-box;
   display: -ms-flexbox;
