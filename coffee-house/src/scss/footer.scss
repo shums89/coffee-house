@@ -1,0 +1,115 @@
+.footer {
+  color: $textColorLight;
+  margin-bottom: rem(40);
+  // .footer__container
+  &__container {
+  }
+  // .footer__wrapper
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: rem(100);
+    padding: rem(100);
+    background-color: $bgColorContainer;
+    border-radius: 40px;
+  }
+  // .footer__column
+  &__column {
+    // .footer__column_socials
+    &_socials {
+    }
+    // .footer__column_contacts
+    &_contacts {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: rem(38);
+    }
+  }
+  // .footer__title
+  &__title {
+    font-family: $fontFamily;
+    font-size: rem(60);
+    font-weight: 600;
+    line-height: 125%;
+    margin-bottom: rem(40);
+    & span {
+      font-style: italic;
+      color: $textColorAccent;
+    }
+  }
+  // .footer__socials
+  &__socials {
+    display: flex;
+    gap: rem(12);
+  }
+  // .footer__social-item
+  &__social-item {
+  }
+  // .footer__social-link
+  &__social-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: rem(60);
+    height: rem(60);
+    border: rem(1) solid $borderColorLight;
+    border-radius: 50%;
+    transition: all 0.3s ease 0s;
+    &:hover {
+      color: $mainColor;
+      background-color: $bgColorBody;
+      border: rem(1) solid $bgColorBody;
+    }
+    & svg {
+      width: rem(24);
+      height: rem(24);
+    }
+  }
+  // .footer__subtitle
+  &__subtitle {
+    font-family: $fontFamily;
+    font-size: rem(24);
+    font-weight: 600;
+    line-height: 125%;
+  }
+  // .footer__contacts
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: rem(16);
+    font-family: $fontFamily;
+    font-size: rem(16);
+    font-weight: 600;
+    line-height: 150%;
+  }
+  // .footer__contact-item
+  &__contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: rem(4);
+    & svg {
+      margin-right: rem(8);
+    }
+  }
+  // .footer__contact-link
+  &__contact-link {
+    position: relative;
+    display: inline-block;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: rem(-4);
+      left: 50%;
+      width: 0;
+      height: rem(1);
+      background-color: $textColorLight;
+      transform: translateX(-50%);
+      transition: width 0.3s ease 0s;
+    }
+    &:hover:after {
+      width: 100%;
+    }
+  }
+}
