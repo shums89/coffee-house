@@ -1,10 +1,11 @@
 // Заголовки, общие БЄМ блоки и проче...
 .section-title {
   font-family: $fontFamily;
-  font-size: rem(60);
   font-weight: 600;
   line-height: 125%;
   color: $mainColor;
+  @include adaptiveValue('font-size', 60, 32, 768, 380, 1);
+
   & span {
     font-style: italic;
     color: $textColorAccent;
