@@ -34,7 +34,7 @@ $borderColorDark: #665f55;
 // НАСТРОЙКИ
 
 // Минимальная ширина страницы
-$minWidth: 320;
+$minWidth: 380;
 // Ширина полотна (макета)
 $maxWidth: 1440;
 // Ширина ограничивающего контейнера (0 = нет ограничения)
@@ -112,7 +112,9 @@ body {
       margin: 0 auto;
     }
     @if ($containerPadding>0) {
-      padding: 0 rem(math.div($containerPadding, 2));
+      // padding: 0 rem(math.div($containerPadding, 2));
+      @include adaptiveValue('padding-left', math.div($containerPadding, 2), 16, 768, 380, 1);
+      @include adaptiveValue('padding-right', math.div($containerPadding, 2), 16, 768, 380, 1);
     }
   }
 } @else {

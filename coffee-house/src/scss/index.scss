@@ -4,20 +4,30 @@
   }
   // .promo__content
   &__content {
-    height: rem(644);
-    padding: rem(100);
-    background: url('@img/enjoy/bg.jpg') center / 100% no-repeat;
+    background: url('@img/enjoy/bg.jpg') center no-repeat;
     border-radius: rem(40);
+
+    @include adaptiveValue('height', 644, 552, 768, 380, 1);
+    @include adaptiveValue('padding-top', 100, 60, 768, 380, 1);
+    @include adaptiveValue('padding-bottom', 100, 60, 768, 380, 1);
+
+    @include adaptiveValue('padding-left', 100, 60, $maxWidthContainer, 768, 2);
+    @include adaptiveValue('padding-left', 60, 16, 768, 380);
+
+    @include adaptiveValue('padding-right', 100, 60, $maxWidthContainer, 768, 2);
+    @include adaptiveValue('padding-right', 60, 16, 768, 380);
   }
   // .promo__title
   &__title {
     max-width: rem(530);
     margin-bottom: rem(40);
     font-family: $fontFamily;
-    font-size: rem(72);
     font-weight: 600;
-    line-height: 105%;
     color: $textColorLight;
+
+    @include adaptiveValue('font-size', 72, 42, 768, 380, 1);
+    @include adaptiveValue('line-height', 75.6, 48.3, 768, 380, 1);
+
     & span {
       font-style: italic;
       color: $textColorAccent;
@@ -31,7 +41,7 @@
     font-size: rem(16);
     font-weight: 400;
     line-height: 150%;
-    color: $textColorAccent;
+    color: $textColorLight;
   }
   // .promo__link
   &__link {
