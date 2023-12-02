@@ -48,12 +48,14 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 
 // Размеры устройств
 $tabletWidth: 991.98;
+$mobileWidth: 767.98;
+$mobileSmallWidth: 479.98;
 
 // Брейк-поинты
 $pc: em($containerWidth); // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
 $tablet: em($tabletWidth); // Планшеты, некоторые телефоны в горизонтальном положении
-$mobile: em(767.98); // Телефоны L
-$mobileSmall: em(479.98); // Телефоны S
+$mobile: em($mobileWidth); // Телефоны L
+$mobileSmall: em($mobileSmallWidth); // Телефоны S
 
 // Тип адаптива:
 // 1 = отзывчивость (у контейнера нет брейкпоинтов),

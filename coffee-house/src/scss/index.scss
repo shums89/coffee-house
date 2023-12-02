@@ -268,13 +268,16 @@
   &__container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(rem(420), 1fr));
+    align-items: center;
     gap: rem(100);
+    @media (max-width: $tablet) {
+      grid-template-columns: 1fr;
+    }
   }
   // .mobile__content
   &__content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: rem(40);
   }
   // .mobile__title
@@ -290,13 +293,20 @@
   // .mobile__buttons
   &__buttons {
     display: flex;
-    column-gap: rem(20);
+    flex-wrap: wrap;
+    gap: rem(20);
   }
   // .mobile__button
   &__button {
   }
-  // .mobile__img
-  &__img {
+  // .mobile__image
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & img {
+      max-height: rem(630);
+    }
   }
 }
 .mobile-button {
