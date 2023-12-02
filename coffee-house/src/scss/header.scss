@@ -68,6 +68,11 @@
     &:hover {
       transform: scale(1.1);
     }
+    .html-home & {
+      cursor: default;
+      user-select: none;
+      pointer-events: none;
+    }
   }
 }
 .menu {
