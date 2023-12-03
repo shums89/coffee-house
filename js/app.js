@@ -13,6 +13,9 @@
             document.documentElement.classList.add(className);
         }));
     }
+    function addTouchClass() {
+        if ("ontouchstart" in window || window.DocumentTouch && document instanceof DocumentTouch) ; else document.documentElement.classList.add("no-touch");
+    }
     function menuInit() {
         if (document.querySelector(".icon-menu")) document.addEventListener("click", (function(e) {
             if (bodyLockStatus && e.target.closest(".icon-menu")) {
@@ -64,6 +67,16 @@
     console.log("2. The layout matches the design: (40/40)");
     console.log("3. CSS Requirements: (10/10)");
     console.log("4. Interactivity: (32/32)");
+    console.log("\n");
+    console.log("CROSS CHECK. PART 2 (90/90)");
+    console.log("1. The layout of the pages aligns the design at a screen width of 1440px (14/14)");
+    console.log("2. The layout of the pages aligns the design at a screen width of 768px (14/14)");
+    console.log("3. The layout of the pages aligns the design at a screen width of 380px (14/14)");
+    console.log("4. There is no horizontal scrollbar at all screen width up to 380px inclusive (20/20)");
+    console.log("5. During smooth resizing of the browser window from 1440px to 380px, nothing breaks (8/8)");
+    console.log("6. At screen widths of 768px and below, the hamburger menu icon appears instead of the navigation bar (4/4)");
+    console.log("7. Hover effects are active on desktop devices and are disabled for mobile devices on both pages (4/4)");
+    console.log("8. The layout for both pages is validated and error-free according to the W3C Validator (12/12)");
     window.addEventListener("load", (() => {
         const lazyObjs = document.querySelectorAll("[data-src], [data-srcset], [data-poster]");
         const updateLazyObject = arr => {
@@ -141,22 +154,27 @@
         changeSlide();
     };
     initfavoriteSlider();
-    const tabs = (headerSelector, tabSelector, contentSelector, activeClass, display = "flex") => {
+    const tabs = (headerSelector, tabSelector, contentSelector, activeClassHeader, activeClassContent) => {
         const header = document.querySelector(headerSelector);
         if (!header) return;
         const tab = header.querySelectorAll(tabSelector);
         const content = header.querySelectorAll(contentSelector);
+        const toggleButtonRefresh = content => {
+            const count = content.querySelectorAll(".products__item").length;
+            if (count > 4) document.querySelector(".menu-tabs__refresh").classList.remove("hidden"); else document.querySelector(".menu-tabs__refresh").classList.add("hidden");
+        };
         const hideTabContent = () => {
             content.forEach((item => {
-                item.style.display = "none";
+                item.classList.remove(activeClassContent);
             }));
             tab.forEach((item => {
-                item.classList.remove(activeClass);
+                item.classList.remove(activeClassHeader);
             }));
         };
         const showTabContent = (i = 0) => {
-            content[i].style.display = display;
-            tab[i].classList.add(activeClass);
+            content[i].classList.add(activeClassContent);
+            tab[i].classList.add(activeClassHeader);
+            toggleButtonRefresh(content[i]);
         };
         hideTabContent();
         showTabContent();
@@ -170,7 +188,8 @@
             }));
         }));
     };
-    tabs(".menu-tabs", ".menu-tabs__header-item", ".menu-tabs__content-item", "active");
+    tabs(".menu-tabs", ".menu-tabs__header-item", ".menu-tabs__content-item", "active", "active");
     isWebp();
+    addTouchClass();
     menuInit();
 })();
