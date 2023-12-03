@@ -15,6 +15,14 @@ export function isWebp() {
   });
 }
 
+/* Добавление класса no-touch для HTML, если браузер не поддерживает touch */
+export function addTouchClass() {
+  if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+  } else {
+    document.documentElement.classList.add('no-touch');
+  }
+}
+
 //====================================================================
 // Модуль работы с меню (бургер)
 // Сниппет (HTML): menu

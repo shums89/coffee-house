@@ -27,7 +27,7 @@
     opacity: 0.2;
     cursor: default;
   }
-  &:not(:disabled):hover {
+  .no-touch &:not(:disabled):hover {
     color: $textColorLight;
     border: rem(1) solid $bgColorContainer;
     background-color: $bgColorContainer;
@@ -49,7 +49,7 @@
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
-    &:hover img {
+    .no-touch &:hover img {
       transform: scale(1);
     }
   }

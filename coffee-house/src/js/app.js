@@ -10,6 +10,8 @@ import * as flsFunctions from "./files/functions.js";
 // Необходимо для корректного отображения webp из css
 flsFunctions.isWebp();
 
+/* Добавление класса no-touch для HTML, если браузер не поддерживает touch */
+flsFunctions.addTouchClass();
 
 /* Модуль для работы с меню (Бургер) */
 flsFunctions.menuInit();

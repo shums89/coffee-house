@@ -65,7 +65,7 @@
     align-self: start;
     height: auto;
     transition: transform 0.3s ease 0s;
-    &:hover {
+    .no-touch &:hover {
       transform: scale(1.1);
     }
     .html-home & {
@@ -127,7 +127,7 @@
       opacity: 0;
       transition: all 0.3s ease 0s;
     }
-    &:hover:after {
+    .no-touch &:hover:after {
       width: calc(100% - rem(8));
       opacity: 1;
     }
@@ -150,7 +150,7 @@
         width: rem(20);
         height: rem(20);
       }
-      &:hover:after,
+      .no-touch &:hover:after,
       .html-menu &:after {
         width: calc(100% - rem(8));
         opacity: 1;

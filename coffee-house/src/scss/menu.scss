@@ -60,7 +60,7 @@
   transition: all 0.3s ease 0s;
   cursor: pointer;
   &.active,
-  &:hover {
+  .no-touch &:hover {
     color: $textColorLight;
     background-color: $bgColorContainer;
     border: rem(1) solid $bgColorContainer;
@@ -85,7 +85,7 @@
     }
   }
   &.active &__image,
-  &:hover &__image {
+  .no-touch &:hover &__image {
     background-color: $bgColorBody;
   }
 }

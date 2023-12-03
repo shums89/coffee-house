@@ -71,7 +71,7 @@
     border: rem(1) solid $borderColorLight;
     border-radius: 50%;
     transition: all 0.3s ease 0s;
-    &:hover {
+    .no-touch &:hover {
       color: $mainColor;
       background-color: $bgColorBody;
       border: rem(1) solid $bgColorBody;
@@ -123,7 +123,7 @@
       transform: translateX(-50%);
       transition: width 0.3s ease 0s;
     }
-    &:hover:after {
+    .no-touch &:hover:after {
       width: 100%;
     }
   }
