@@ -124,20 +124,6 @@
   &__nav-button {
     position: absolute;
     top: 50%;
-    width: rem(60);
-    height: rem(60);
-    color: $mainColor;
-    border: rem(1) solid $mainColor;
-    border-radius: 50%;
-    &:disabled {
-      opacity: 0.2;
-      cursor: default;
-    }
-    &:not(:disabled):hover {
-      color: $textColorLight;
-      border: rem(1) solid $bgColorContainer;
-      background-color: $bgColorContainer;
-    }
     @media (max-width: em(620)) {
       display: none;
     }
