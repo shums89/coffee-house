@@ -8,7 +8,7 @@
   &__wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(rem(316), 1fr));
-    column-gap: percent(100, 1360);
+    column-gap: percent(100, 1160);
     padding: rem(100);
     background-color: $bgColorContainer;
     border-radius: 40px;

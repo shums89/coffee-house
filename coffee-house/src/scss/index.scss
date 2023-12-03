@@ -63,6 +63,11 @@
       margin-left: 0;
       opacity: 0;
       transition: all 0.3s ease 0s;
+      @media (max-width: em(768)) {
+        width: rem(20);
+        margin-left: rem(8);
+        opacity: 1;
+      }
     }
     &:hover svg {
       width: rem(20);
@@ -255,7 +260,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(rem(420), 1fr));
     align-items: center;
-    gap: rem(100);
+    @include adaptiveValue('gap', 100, 40, 768, 380, 1);
     @media (max-width: $tablet) {
       grid-template-columns: 1fr;
     }

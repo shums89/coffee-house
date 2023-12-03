@@ -97,23 +97,20 @@
   // .menu-content-item__list
   &__list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(rem(310), 1fr));
+    grid-template-columns: repeat(auto-fit, rem(310));
     grid-auto-rows: 1fr;
-    justify-content: space-between;
-    max-height: rem(1052);
+    justify-content: center;
     overflow: hidden;
     gap: rem(40);
-    @media (max-width: em(736)) {
-      max-height: rem(2144);
-    }
   }
 }
 .products {
   // .products__item
   &__item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+    @media (max-width: em(768)) {
+      &:nth-of-type(n + 5) {
+        display: none;
+      }
+    }
   }
 }
