@@ -1,15 +1,41 @@
 // Заголовки, общие БЄМ блоки и проче...
 .section-title {
   font-family: $fontFamily;
-  font-size: rem(60);
   font-weight: 600;
   line-height: 125%;
   color: $mainColor;
+  @include adaptiveValue('font-size', 60, 32, 768, 380, 1);
+
   & span {
     font-style: italic;
     color: $textColorAccent;
   }
 }
+
+//====================================================================
+
+.button-icon-dark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: rem(60);
+  height: rem(60);
+  color: $mainColor;
+  border: rem(1) solid $mainColor;
+  border-radius: 50%;
+  &:disabled {
+    opacity: 0.2;
+    cursor: default;
+  }
+  .no-touch &:not(:disabled):hover {
+    color: $textColorLight;
+    border: rem(1) solid $bgColorContainer;
+    background-color: $bgColorContainer;
+  }
+}
+
+//====================================================================
+
 .product-card {
   width: rem(310);
   min-height: rem(505);
@@ -23,7 +49,7 @@
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
-    &:hover img {
+    .no-touch &:hover img {
       transform: scale(1);
     }
   }

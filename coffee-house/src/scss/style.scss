@@ -34,7 +34,7 @@ $borderColorDark: #665f55;
 // НАСТРОЙКИ
 
 // Минимальная ширина страницы
-$minWidth: 320;
+$minWidth: 380;
 // Ширина полотна (макета)
 $maxWidth: 1440;
 // Ширина ограничивающего контейнера (0 = нет ограничения)
@@ -46,11 +46,16 @@ $containerPadding: 80;
 // Ширина срабатывания первого брейкпоинта
 $containerWidth: $maxWidthContainer + $containerPadding;
 
+// Размеры устройств
+$tabletWidth: 991.98;
+$mobileWidth: 767.98;
+$mobileSmallWidth: 479.98;
+
 // Брейк-поинты
 $pc: em($containerWidth); // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
-$tablet: em(991.98); // Планшеты, некоторые телефоны в горизонтальном положении
-$mobile: em(767.98); // Телефоны L
-$mobileSmall: em(479.98); // Телефоны S
+$tablet: em($tabletWidth); // Планшеты, некоторые телефоны в горизонтальном положении
+$mobile: em($mobileWidth); // Телефоны L
+$mobileSmall: em($mobileSmallWidth); // Телефоны S
 
 // Тип адаптива:
 // 1 = отзывчивость (у контейнера нет брейкпоинтов),
@@ -112,7 +117,9 @@ body {
       margin: 0 auto;
     }
     @if ($containerPadding>0) {
-      padding: 0 rem(math.div($containerPadding, 2));
+      // padding: 0 rem(math.div($containerPadding, 2));
+      @include adaptiveValue('padding-left', math.div($containerPadding, 2), 16, 768, 380, 1);
+      @include adaptiveValue('padding-right', math.div($containerPadding, 2), 16, 768, 380, 1);
     }
   }
 } @else {
