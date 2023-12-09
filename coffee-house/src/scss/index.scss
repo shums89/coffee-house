@@ -4,8 +4,9 @@
   }
   // .promo__content
   &__content {
-    background: url('@img/enjoy/bg.jpg') center no-repeat;
+    position: relative;
     border-radius: rem(40);
+    overflow: hidden;
 
     @include adaptiveValue('height', 644, 552, 768, 380, 1);
     @include adaptiveValue('padding-top', 100, 60, 768, 380, 1);
@@ -74,6 +75,17 @@
       margin-left: rem(8);
       opacity: 1;
     }
+  }
+  // .promo__video
+  &__video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: -1;
   }
 }
 
