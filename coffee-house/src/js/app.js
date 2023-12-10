@@ -26,6 +26,7 @@ flsFunctions.menuInit();
 import "./files/tabs.js";
 
 /* Подключаем файлы со своим кодом */
+import "./files/products.js";
 import "./files/slider.js";
 import "./files/cross-check.js";
 import "./files/script.js";

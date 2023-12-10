@@ -1,3 +1,13 @@
+export const toggleButtonRefresh = () => {
+  console.log('sdfsdf');
+  const products = document.querySelector('.menu-content-item._active').querySelectorAll('.products__item');
+  const count = [...products].filter(product => getComputedStyle(product).display == 'none').length || 0;
+
+  count > 0 ?
+    document.querySelector('.menu-tabs__refresh').classList.remove('hidden') :
+    document.querySelector('.menu-tabs__refresh').classList.add('hidden');
+};
+
 const tabs = (headerSelector, tabSelector, contentSelector, activeClassHeader, activeClassContent) => {
   const header = document.querySelector(headerSelector);
 
@@ -6,14 +16,10 @@ const tabs = (headerSelector, tabSelector, contentSelector, activeClassHeader, a
   const tab = header.querySelectorAll(tabSelector);
   const content = header.querySelectorAll(contentSelector);
 
-  const toggleButtonRefresh = (content) => {
-    const count = content.querySelectorAll('.products__item').length;
-    if (count > 4) {
-      document.querySelector('.menu-tabs__refresh').classList.remove('hidden');
-    }
-    else {
-      document.querySelector('.menu-tabs__refresh').classList.add('hidden');
-    }
+  const resetContent = (content) => {
+    const products = content.querySelectorAll('.products__item');
+
+    products.forEach(product => product.style = '');
   };
 
   const hideTabContent = () => {
@@ -28,7 +34,8 @@ const tabs = (headerSelector, tabSelector, contentSelector, activeClassHeader, a
   const showTabContent = (i = 0) => {
     content[i].classList.add(activeClassContent);
     tab[i].classList.add(activeClassHeader)
-    toggleButtonRefresh(content[i]);
+    resetContent(content[i]);
+    toggleButtonRefresh();
   };
 
   hideTabContent()
@@ -53,4 +60,4 @@ const tabs = (headerSelector, tabSelector, contentSelector, activeClassHeader, a
 // ТРЕТИЙ аргумент - класс того блока, который будет переключаться.
 // ЧЕТВЕРТЫЙ аргумент - класс активности, который будет добавлятся для таба, который сейчас активен.
 // ПЯТЫЙ аргумент - класс активности, который будет добавлятся для контента, который сейчас активен.
-tabs('.menu-tabs', '.menu-tabs__header-item', '.menu-tabs__content-item', 'active', 'active');
+tabs('.menu-tabs', '.menu-tabs__header-item', '.menu-tabs__content-item', '_active', '_active');

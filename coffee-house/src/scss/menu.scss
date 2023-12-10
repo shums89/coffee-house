@@ -59,13 +59,13 @@
   line-height: 150%;
   transition: all 0.3s ease 0s;
   cursor: pointer;
-  &.active,
+  &._active,
   .no-touch &:hover {
     color: $textColorLight;
     background-color: $bgColorContainer;
     border: rem(1) solid $bgColorContainer;
   }
-  &.active {
+  &._active {
     cursor: default;
     user-select: none;
     pointer-events: none;
@@ -84,14 +84,14 @@
       height: rem(24);
     }
   }
-  &.active &__image,
+  &._active &__image,
   .no-touch &:hover &__image {
     background-color: $bgColorBody;
   }
 }
 .menu-content-item {
   display: none;
-  &.active {
+  &._active {
     display: block;
   }
   // .menu-content-item__list
@@ -107,6 +107,8 @@
 .products {
   // .products__item
   &__item {
+    display: block;
+
     @media (max-width: em(768)) {
       &:nth-of-type(n + 5) {
         display: none;
