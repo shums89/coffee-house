@@ -209,8 +209,69 @@
         </div>
       </section>
     </main>
+
     @@include('html/_footer.htm',{})
+
+    <template id="modal">
+      <div class="modal">
+        <div class="modal__wrapper">
+          <div class="modal__image"><img src="@img/menu/coffee-1.jpg" alt="Image"></div>
+          <div class="modal__content">
+            <div class="modal__text-wrapper">
+              <h2 class="modal__title">Irish coffee</h2>
+              <p class="modal__text">Fragrant black coffee with Jameson Irish whiskey and whipped milk</p>
+            </div>
+            <fieldset class="modal__fieldset modal-fieldset modal-fieldset_size">
+              <legend class="modal-fieldset__title">Size</legend>
+              <ul class="modal-fieldset__list">
+                <li class="modal-fieldset__item">
+                  <input class="modal-fieldset__input visually-hidden" type="radio" name="size" value="200" id="field-size-200" checked="checked">
+                  <label class="modal-fieldset__label" for="field-size-200"><span>S</span>200 ml</label>
+                </li>
+                <li class="modal-fieldset__item">
+                  <input class="modal-fieldset__input visually-hidden" type="radio" name="size" value="400" id="field-size-300">
+                  <label class="modal-fieldset__label" for="field-size-300"><span>M</span>300 ml</label>
+                </li>
+                <li class="modal-fieldset__item">
+                  <input class="modal-fieldset__input visually-hidden" type="radio" name="size" value="400" id="field-size-400">
+                  <label class="modal-fieldset__label" for="field-size-400"><span>L</span>400 ml</label>
+                </li>
+              </ul>
+            </fieldset>
+            <fieldset class="modal__fieldset modal-fieldset modal-fieldset_additives">
+              <legend class="modal-fieldset__title">Additives</legend>
+              <ul class="modal-fieldset__list">
+                <li class="modal-fieldset__item">
+                  <input class="modal-fieldset__input visually-hidden" type="checkbox" name="additive-sugar" value="sugar" id="field-additive-sugar">
+                  <label class="modal-fieldset__label" for="field-additive-sugar"><span>1</span>Sugar</label>
+                </li>
+                <li class="modal-fieldset__item">
+                  <input class="modal-fieldset__input visually-hidden" type="checkbox" name="additive-cinnamon" value="cinnamon" id="field-additive-cinnamon">
+                  <label class="modal-fieldset__label" for="field-additive-cinnamon"><span>2</span>Cinnamon</label>
+                </li>
+                <li class="modal-fieldset__item">
+                  <input class="modal-fieldset__input visually-hidden" type="checkbox" name="additive-syrup" value="syrup" id="field-additive-syrup">
+                  <label class="modal-fieldset__label" for="field-additive-syrup"><span>3</span>Syrup</label>
+                </li>
+              </ul>
+            </fieldset>
+            <div class="modal__total">
+              <h3 class="modal__total-title">Total:</h3>
+              <p class="modal__total-value">$7.00</p>
+            </div>
+            <div class="modal__note-wrapper">
+              <svg class="modal__note-img" width="16" height="16">
+                <use href="@img/icons/sprite.svg#info-empty"></use>
+              </svg>
+              <p class="modal__note-text">The cost is not final. Download our mobile app to see the final price and place your order. Earn loyalty points and enjoy your favorite coffee with up to 20% discount.</p>
+            </div>
+            <button class="modal__btn" type="button">Close</button>
+          </div>
+        </div>
+      </div>
+    </template>
   </div>
+
   @@include('html/_js.htm',{})
 </body>
 
