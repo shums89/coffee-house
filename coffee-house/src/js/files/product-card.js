@@ -15,21 +15,23 @@ const init = () => {
     return await response.json();
   };
 
-  const getProduct = (title, urlImage) => {
+  const getProduct = (title, urlsImage) => {
     getData(`./files/products.json`).then(products => {
-      openModal(products.find(product => product.name == title), urlImage);
+      openModal(products.find(product => product.name == title), urlsImage);
     });
   }
 
-  const openModal = (product, urlImage) => {
+  const openModal = (product, urlsImage) => {
     if (!product) return;
-    console.log(urlImage);
 
     modal.querySelector('.modal__title').textContent = product.name;
     modal.querySelector('.modal__text').textContent = product.description;
     modal.querySelector('.modal__total-value span').textContent = product.price;
     modal.querySelector('.modal__total-value span').dataset.value = product.price;
-    modal.querySelector('.modal__image img').src = urlImage;
+    modal.querySelector('.modal__image img').src = urlsImage.src;
+    modal.querySelectorAll('.modal__image source').forEach(source => {
+      source.srcset = urlsImage.srcset;
+    });
 
     calcTotal();
     modal.classList.remove('hidden');
@@ -50,7 +52,12 @@ const init = () => {
 
       if (!card && !modal) return;
 
-      getProduct(card.querySelector('.product-card__title').textContent, card.querySelector('.product-card__image img').dataset.src);
+      const urlsImage = {
+        src: card.querySelector('.product-card__image img').dataset.src,
+        srcset: card.querySelector('.product-card__image source').dataset.srcset
+      };
+
+      getProduct(card.querySelector('.product-card__title').textContent, urlsImage);
     });
   });
 
