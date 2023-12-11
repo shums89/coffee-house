@@ -55,6 +55,10 @@
   font-weight: 600;
   line-height: 150%;
   min-height: rem(100);
+  @media (max-width: em(768)) {
+    font-size: rem(32);
+    line-height: 125%;
+  }
   // .header__container
   &__container {
   }
@@ -156,7 +160,7 @@
     &_menu {
       flex: 0 0 rem(80);
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       gap: rem(10);
       max-width: rem(82);
@@ -179,6 +183,14 @@
       }
       @media (max-width: em(768)) {
         margin: rem(100) auto auto auto;
+        max-width: rem(151);
+        max-height: rem(48);
+        gap: rem(16);
+
+        & svg {
+          width: rem(40);
+          height: rem(40);
+        }
       }
     }
   }

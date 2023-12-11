@@ -15,19 +15,21 @@ const init = () => {
     return await response.json();
   };
 
-  const getProduct = (title) => {
+  const getProduct = (title, urlImage) => {
     getData(`./files/products.json`).then(products => {
-      openModal(products.find(product => product.name == title));
+      openModal(products.find(product => product.name == title), urlImage);
     });
   }
 
-  const openModal = (product) => {
+  const openModal = (product, urlImage) => {
     if (!product) return;
+    console.log(urlImage);
 
     modal.querySelector('.modal__title').textContent = product.name;
     modal.querySelector('.modal__text').textContent = product.description;
     modal.querySelector('.modal__total-value span').textContent = product.price;
     modal.querySelector('.modal__total-value span').dataset.value = product.price;
+    modal.querySelector('.modal__image img').src = urlImage;
 
     calcTotal();
     modal.classList.remove('hidden');
@@ -48,7 +50,7 @@ const init = () => {
 
       if (!card && !modal) return;
 
-      getProduct(card.querySelector('.product-card__title').textContent);
+      getProduct(card.querySelector('.product-card__title').textContent, card.querySelector('.product-card__image img').dataset.src);
     });
   });
 
