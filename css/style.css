@@ -482,11 +482,6 @@ html {
 
 .html-menu .menu__link_menu {
   cursor: default;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  pointer-events: none;
 }
 
 .menu__link_menu svg {
@@ -1411,6 +1406,17 @@ html {
 .page__mobile,
 .page__section-menu {
   margin-bottom: 6.25rem;
+}
+
+@media (min-width: 48.0625em) {
+  .html-menu .menu__link_menu {
+    cursor: default;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    pointer-events: none;
+  }
 }
 
 @media (min-width: 48em) {

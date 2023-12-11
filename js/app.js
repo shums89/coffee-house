@@ -318,7 +318,10 @@
     console.log("7. Hover effects are active on desktop devices and are disabled for mobile devices on both pages (4/4)");
     console.log("8. The layout for both pages is validated and error-free according to the W3C Validator (12/12)");
     const links = document.querySelectorAll(".menu__link");
-    links.forEach((link => link.addEventListener("click", (() => menuClose()))));
+    links.forEach((link => link.addEventListener("click", (e => {
+        if (e.target.closest(".html-menu") && e.target.closest(".menu__link_menu")) e.preventDefault();
+        menuClose();
+    }))));
     isWebp();
     addTouchClass();
     lazyload();
