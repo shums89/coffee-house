@@ -1,5 +1,4 @@
 export const toggleButtonRefresh = () => {
-  console.log('sdfsdf');
   const products = document.querySelector('.menu-content-item._active').querySelectorAll('.products__item');
   const count = [...products].filter(product => getComputedStyle(product).display == 'none').length || 0;
 
