@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20231203192244">
+	<link rel="stylesheet" href="css/style.min.css?_v=20231212175919">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,7 +42,7 @@
 					<h1 class="section-menu__title section-title">Behind each of our cups hides an <span>amazing surprise</span></h1>
 					<div class="section-menu__tabs menu-tabs">
 						<div class="menu-tabs__header">
-							<div class="menu-tabs__header-item menu-tabs-switch active">
+							<div class="menu-tabs__header-item menu-tabs-switch _active">
 								<div class="menu-tabs-switch__image"><picture><source data-srcset="img/menu/icon-coffee.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  width="16" height="24" data-src="img/menu/icon-coffee.png" alt="coffee"></picture></div>
 								Coffee
 							</div>
@@ -56,7 +56,7 @@
 							</div>
 						</div>
 						<div class="menu-tabs__content">
-							<div class="menu-tabs__content-item menu-content-item active">
+							<div class="menu-tabs__content-item menu-content-item _active">
 								<ul class="menu-content-item__list products">
 									<li class="products__item">
 										<article class="product-card">
@@ -358,6 +358,7 @@
 				</div>
 			</section>
 		</main>
+
 		<footer class="footer">
 			<div class="footer__container">
 				<div class="footer__wrapper">
@@ -414,8 +415,66 @@
 				</div>
 			</div>
 		</footer>
+
+		<section class="modal hidden">
+			<div class="modal__wrapper">
+				<div class="modal__image"><picture><source srcset="img/menu/coffee-1.webp" type="image/webp"><img src="img/menu/coffee-1.jpg" alt="Image"></picture></div>
+				<div class="modal__content">
+					<div class="modal__text-wrapper">
+						<h2 class="modal__title">Irish coffee</h2>
+						<p class="modal__text">Fragrant black coffee with Jameson Irish whiskey and whipped milk</p>
+					</div>
+					<fieldset class="modal__fieldset modal-fieldset modal-fieldset_size">
+						<legend class="modal-fieldset__title">Size</legend>
+						<ul class="modal-fieldset__list">
+							<li class="modal-fieldset__item">
+								<input class="modal-fieldset__input visually-hidden" type="radio" name="size" data-value="0" id="field-size-s" checked="checked">
+								<label class="modal-fieldset__label" for="field-size-s"><span>S</span>200 ml</label>
+							</li>
+							<li class="modal-fieldset__item">
+								<input class="modal-fieldset__input visually-hidden" type="radio" name="size" data-value="0.5" id="field-size-m">
+								<label class="modal-fieldset__label" for="field-size-m"><span>M</span>300 ml</label>
+							</li>
+							<li class="modal-fieldset__item">
+								<input class="modal-fieldset__input visually-hidden" type="radio" name="size" data-value="1" id="field-size-l">
+								<label class="modal-fieldset__label" for="field-size-l"><span>L</span>400 ml</label>
+							</li>
+						</ul>
+					</fieldset>
+					<fieldset class="modal__fieldset modal-fieldset modal-fieldset_additives">
+						<legend class="modal-fieldset__title">Additives</legend>
+						<ul class="modal-fieldset__list">
+							<li class="modal-fieldset__item">
+								<input class="modal-fieldset__input visually-hidden" type="checkbox" name="additive-sugar" data-value="0.5" id="field-additive-sugar">
+								<label class="modal-fieldset__label" for="field-additive-sugar"><span>1</span>Sugar</label>
+							</li>
+							<li class="modal-fieldset__item">
+								<input class="modal-fieldset__input visually-hidden" type="checkbox" name="additive-cinnamon" data-value="0.5" id="field-additive-cinnamon">
+								<label class="modal-fieldset__label" for="field-additive-cinnamon"><span>2</span>Cinnamon</label>
+							</li>
+							<li class="modal-fieldset__item">
+								<input class="modal-fieldset__input visually-hidden" type="checkbox" name="additive-syrup" data-value="0.5" id="field-additive-syrup">
+								<label class="modal-fieldset__label" for="field-additive-syrup"><span>3</span>Syrup</label>
+							</li>
+						</ul>
+					</fieldset>
+					<div class="modal__total">
+						<h3 class="modal__total-title">Total:</h3>
+						<p class="modal__total-value">$<span data-value="7">7.00</span></p>
+					</div>
+					<div class="modal__note-wrapper">
+						<svg class="modal__note-img" width="16" height="16">
+							<use href="img/icons/sprite.svg#info-empty"></use>
+						</svg>
+						<p class="modal__note-text">The cost is not final. Download our mobile app to see the final price and place your order. Earn loyalty points and enjoy your favorite coffee with up to 20% discount.</p>
+					</div>
+					<button class="modal__btn" type="button">Close</button>
+				</div>
+			</div>
+		</section>
 	</div>
-	<script src="js/app.min.js?_v=20231203192244"></script>
+
+	<script src="js/app.min.js?_v=20231212175919"></script>
 </body>
 
 </html>

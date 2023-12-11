@@ -16,6 +16,19 @@
     function addTouchClass() {
         if ("ontouchstart" in window || window.DocumentTouch && document instanceof DocumentTouch) ; else document.documentElement.classList.add("no-touch");
     }
+    const lazyload = () => {
+        window.addEventListener("load", (() => {
+            const lazyObjs = document.querySelectorAll("[data-src], [data-srcset], [data-poster]");
+            const updateLazyObject = arr => {
+                arr.forEach((el => {
+                    if (el.dataset.src) el.src = el.dataset.src;
+                    if (el.dataset.srcset) el.srcset = el.dataset.srcset;
+                    if (el.dataset.poster) el.poster = el.dataset.poster;
+                }));
+            };
+            if (lazyObjs) updateLazyObject(lazyObjs);
+        }));
+    };
     function menuInit() {
         if (document.querySelector(".icon-menu")) document.addEventListener("click", (function(e) {
             if (bodyLockStatus && e.target.closest(".icon-menu")) {
@@ -23,6 +36,10 @@
                 document.documentElement.classList.toggle("menu-open");
             }
         }));
+    }
+    function menuClose() {
+        bodyUnlock();
+        document.documentElement.classList.remove("menu-open");
     }
     let bodyLockStatus = true;
     let bodyLockToggle = (delay = 500) => {
@@ -62,6 +79,208 @@
             }), delay);
         }
     };
+    const toggleButtonRefresh = () => {
+        const products = document.querySelector(".menu-content-item._active").querySelectorAll(".products__item");
+        const count = [ ...products ].filter((product => getComputedStyle(product).display == "none")).length || 0;
+        count > 0 ? document.querySelector(".menu-tabs__refresh").classList.remove("hidden") : document.querySelector(".menu-tabs__refresh").classList.add("hidden");
+    };
+    const tabs = (headerSelector, tabSelector, contentSelector, activeClassHeader, activeClassContent) => {
+        const header = document.querySelector(headerSelector);
+        if (!header) return;
+        const tab = header.querySelectorAll(tabSelector);
+        const content = header.querySelectorAll(contentSelector);
+        const resetContent = content => {
+            const products = content.querySelectorAll(".products__item");
+            products.forEach((product => product.style = ""));
+        };
+        const hideTabContent = () => {
+            content.forEach((item => {
+                item.classList.remove(activeClassContent);
+            }));
+            tab.forEach((item => {
+                item.classList.remove(activeClassHeader);
+            }));
+        };
+        const showTabContent = (i = 0) => {
+            content[i].classList.add(activeClassContent);
+            tab[i].classList.add(activeClassHeader);
+            resetContent(content[i]);
+            toggleButtonRefresh();
+        };
+        hideTabContent();
+        showTabContent();
+        header.addEventListener("click", (e => {
+            const target = e.target;
+            if (target.classList.contains(tabSelector.replace(/\./, "")) || target.parentNode.classList.contains(tabSelector.replace(/\./, ""))) tab.forEach(((item, i) => {
+                if (target == item || target.parentNode == item) {
+                    hideTabContent();
+                    showTabContent(i);
+                }
+            }));
+        }));
+    };
+    tabs(".menu-tabs", ".menu-tabs__header-item", ".menu-tabs__content-item", "_active", "_active");
+    const init = () => {
+        if (!document.querySelector(".html-menu")) return;
+        const modal = document.querySelector(".modal");
+        const inputs = modal.querySelectorAll("input");
+        const productCards = document.querySelectorAll(".product-card__link");
+        const getData = async function(url) {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(`Ошибка по адресу "${url}", статус ошибки ${response.status}!`);
+            return await response.json();
+        };
+        const getProduct = title => {
+            getData(`./files/products.json`).then((products => {
+                openModal(products.find((product => product.name == title)));
+            }));
+        };
+        const openModal = product => {
+            if (!product) return;
+            modal.querySelector(".modal__title").textContent = product.name;
+            modal.querySelector(".modal__text").textContent = product.description;
+            modal.querySelector(".modal__total-value span").textContent = product.price;
+            modal.querySelector(".modal__total-value span").dataset.value = product.price;
+            calcTotal();
+            modal.classList.remove("hidden");
+            document.documentElement.classList.add("lock");
+        };
+        const closeModal = e => {
+            if (!e.target.closest(".modal__wrapper") || e.target.closest(".modal__btn")) {
+                modal.classList.add("hidden");
+                document.documentElement.classList.remove("lock");
+                inputs.forEach((input => input.checked = input.defaultChecked));
+            }
+        };
+        productCards.forEach((card => {
+            card.addEventListener("click", (e => {
+                const card = e.target.closest(".product-card__link");
+                if (!card && !modal) return;
+                getProduct(card.querySelector(".product-card__title").textContent);
+            }));
+        }));
+        const calcTotal = () => {
+            let total = modal.querySelector(".modal__total-value span").dataset.value;
+            inputs.forEach((input => total = +total + +(input.checked ? input.dataset.value : 0)));
+            const totalFormat = new Intl.NumberFormat("en", {
+                style: "decimal",
+                minimumFractionDigits: 2
+            }).format(total);
+            modal.querySelector(".modal__total-value span").textContent = totalFormat;
+        };
+        modal.addEventListener("click", closeModal);
+        inputs.forEach((input => input.addEventListener("change", calcTotal)));
+    };
+    init();
+    const products = () => {
+        const tabs = document.querySelector(".menu-tabs");
+        if (!tabs) return;
+        const btnRefresh = tabs.querySelector(".menu-tabs__refresh");
+        btnRefresh.addEventListener("click", (e => {
+            e.preventDefault();
+            const products = tabs.querySelectorAll("._active .products__item");
+            products.forEach((product => {
+                product.style.display = "block";
+            }));
+            btnRefresh.classList.add("hidden");
+        }));
+        window.addEventListener("resize", (() => {
+            const products = tabs.querySelectorAll(".products__item");
+            products.forEach((product => product.style = ""));
+            toggleButtonRefresh();
+        }));
+    };
+    products();
+    const initFavoriteSlider = () => {
+        const slider = document.querySelector(".favorite-slider");
+        if (!slider) return;
+        const sliderWrapper = slider.querySelector(".favorite-slider__wrapper");
+        const sliderList = slider.querySelector(".favorite-slider__swiper");
+        const sliderItems = sliderList.querySelectorAll(".favorite-slider__slide");
+        const sliderPaginations = slider.querySelectorAll(".favorite-slider__pagination > span");
+        const btnPrev = slider.querySelector(".favorite-slider__nav-button_prev");
+        const btnNext = slider.querySelector(".favorite-slider__nav-button_next");
+        let currentSlide = 0;
+        const PosX = {
+            init: 0,
+            current: 0,
+            min: 0,
+            max: 0
+        };
+        let PosYInit = 0;
+        const changeSlide = (slide = "") => {
+            const slideWidth = +getComputedStyle(sliderItems[0]).width.replace("px", "") + +getComputedStyle(sliderList).gap.replace("px", "");
+            const countSlides = sliderItems.length;
+            sliderItems[currentSlide].removeEventListener("touchmove", move);
+            sliderItems[currentSlide].removeEventListener("mouseleave", move);
+            sliderItems[currentSlide].removeEventListener("touchend", endListener);
+            sliderItems[currentSlide].removeEventListener("mouseup", endListener);
+            sliderPaginations.forEach(((pagination, index) => {
+                if (pagination.closest("._active")) currentSlide = index;
+            }));
+            switch (slide) {
+              case "prev":
+                currentSlide === 0 ? currentSlide = countSlides - 1 : currentSlide--;
+                break;
+
+              case "next":
+                currentSlide === countSlides - 1 ? currentSlide = 0 : currentSlide++;
+            }
+            sliderPaginations.forEach(((pagination, index) => {
+                pagination.classList.remove("_active");
+                pagination.classList.remove("_paused");
+                if (index === currentSlide) pagination.classList.add("_active");
+            }));
+            sliderList.style.transition = "all 1s ease 0s";
+            sliderList.style.transform = `translateX(-${slideWidth * currentSlide}px)`;
+            PosX.init = 0;
+            PosX.current = 0;
+            sliderItems[currentSlide].addEventListener("touchstart", startListener);
+            sliderItems[currentSlide].addEventListener("mousedown", startListener);
+        };
+        const setPaused = () => {
+            slider.querySelector("span._active").classList.add("_paused");
+        };
+        const deletePaused = () => {
+            slider.querySelector("span._active").classList.remove("_paused");
+        };
+        const startListener = e => {
+            e.preventDefault();
+            setPaused();
+            const coords = sliderWrapper.getBoundingClientRect();
+            PosX.init = e.clientX || e.changedTouches[0].clientX;
+            PosYInit = e.clientY || e.changedTouches[0].clientY;
+            PosX.min = coords.left;
+            PosX.max = coords.right;
+            sliderItems[currentSlide].addEventListener("touchmove", move);
+            sliderItems[currentSlide].addEventListener("mouseleave", move);
+            sliderItems[currentSlide].addEventListener("touchend", endListener);
+            sliderItems[currentSlide].addEventListener("mouseup", endListener);
+        };
+        const endListener = e => {
+            e.preventDefault();
+            deletePaused();
+            PosX.current = e.clientX || e.changedTouches[0].clientX;
+            if (Math.abs(PosX.current - PosX.init) > 20) if (PosX.current > PosX.init) changeSlide("prev"); else changeSlide("next"); else changeSlide();
+        };
+        const move = e => {
+            PosX.current = e.clientX || e.changedTouches[0].clientX;
+            window.scrollBy(0, PosYInit - (e.clientY || e.changedTouches[0].clientY));
+            if (PosX.current > PosX.max) changeSlide("prev"); else if (PosX.current < PosX.min) changeSlide("next");
+        };
+        btnPrev.addEventListener("click", (() => changeSlide("prev")));
+        btnNext.addEventListener("click", (() => changeSlide("next")));
+        sliderPaginations.forEach((pagination => {
+            pagination.addEventListener("animationend", (() => changeSlide("next")));
+        }));
+        sliderItems.forEach((slide => {
+            slide.addEventListener("click", (e => e.preventDefault()));
+            slide.addEventListener("mouseenter", setPaused);
+            slide.addEventListener("mouseleave", deletePaused);
+        }));
+        changeSlide();
+    };
+    initFavoriteSlider();
     console.log("CROSS CHECK. PART 1 (100/100)");
     console.log("1. Checking validation of pages (18/18)");
     console.log("2. The layout matches the design: (40/40)");
@@ -77,119 +296,10 @@
     console.log("6. At screen widths of 768px and below, the hamburger menu icon appears instead of the navigation bar (4/4)");
     console.log("7. Hover effects are active on desktop devices and are disabled for mobile devices on both pages (4/4)");
     console.log("8. The layout for both pages is validated and error-free according to the W3C Validator (12/12)");
-    window.addEventListener("load", (() => {
-        const lazyObjs = document.querySelectorAll("[data-src], [data-srcset], [data-poster]");
-        const updateLazyObject = arr => {
-            arr.forEach((el => {
-                if (el.dataset.src) el.src = el.dataset.src;
-                if (el.dataset.srcset) el.srcset = el.dataset.srcset;
-                if (el.dataset.poster) el.poster = el.dataset.poster;
-            }));
-        };
-        if (lazyObjs) updateLazyObject(lazyObjs);
-    }));
-    window.addEventListener("DOMContentLoaded", (function() {
-        [].forEach.call(document.querySelectorAll('input[type="tel"]'), (function(input) {
-            var keyCode;
-            function mask(event) {
-                event.keyCode && (keyCode = event.keyCode);
-                var pos = this.selectionStart;
-                if (pos < 3) event.preventDefault();
-                var matrix = "+7 (___) ___-__-__", i = 0, def = matrix.replace(/\D/g, ""), val = this.value.replace(/\D/g, ""), new_value = matrix.replace(/[_\d]/g, (function(a) {
-                    return i < val.length ? val.charAt(i++) || def.charAt(i) : a;
-                }));
-                i = new_value.indexOf("_");
-                if (i != -1) {
-                    i < 5 && (i = 3);
-                    new_value = new_value.slice(0, i);
-                }
-                var reg = matrix.substr(0, this.value.length).replace(/_+/g, (function(a) {
-                    return "\\d{1," + a.length + "}";
-                })).replace(/[+()]/g, "\\$&");
-                reg = new RegExp("^" + reg + "$");
-                if (!reg.test(this.value) || this.value.length < 5 || keyCode > 47 && keyCode < 58) this.value = new_value;
-                if (event.type == "blur" && this.value.length < 5) this.value = "";
-            }
-            input.addEventListener("input", mask, false);
-            input.addEventListener("focus", mask, false);
-            input.addEventListener("blur", mask, false);
-            input.addEventListener("keydown", mask, false);
-        }));
-    }));
-    const initfavoriteSlider = () => {
-        const favoriteSlider = document.querySelector(".favorite-slider");
-        if (!favoriteSlider) return;
-        const favoriteSliderList = favoriteSlider.querySelector(".favorite-slider__swiper");
-        const favoriteSliderItems = favoriteSliderList.querySelectorAll(".favorite-slider__slide");
-        const favoriteSliderPagination = favoriteSlider.querySelector(".favorite-slider__pagination");
-        const favoriteSliderNavButtons = favoriteSlider.querySelectorAll(".favorite-slider__nav-button");
-        const changeSlide = e => {
-            const favoriteSliderPaginations = favoriteSliderPagination.querySelectorAll("*");
-            const slideWidth = +getComputedStyle(favoriteSliderItems[0]).width.replace("px", "") + +getComputedStyle(favoriteSliderList).gap.replace("px", "");
-            const countSlides = favoriteSliderPaginations.length;
-            let currentSlide = 0;
-            let target = e ? e.target : null;
-            favoriteSliderPaginations.forEach(((element, index) => {
-                if (element.closest("._active")) currentSlide = index;
-            }));
-            if (target) {
-                if (target.closest(".favorite-slider__nav-button_prev") && currentSlide === 0 || target.closest(".favorite-slider__nav-button_next") && currentSlide === countSlides - 1) return;
-                if (target.closest(".favorite-slider__nav-button_prev")) currentSlide--; else if (target.closest(".favorite-slider__nav-button_next")) currentSlide++;
-            }
-            favoriteSliderPaginations.forEach(((element, index) => {
-                element.classList.remove("_active");
-                if (index === currentSlide) element.classList.add("_active");
-            }));
-            favoriteSliderList.style.transition = "all 1s ease 0s";
-            favoriteSliderList.style.transform = `translateX(-${slideWidth * currentSlide}px)`;
-            favoriteSlider.querySelector(".favorite-slider__nav-button_prev").disabled = currentSlide === 0;
-            favoriteSlider.querySelector(".favorite-slider__nav-button_next").disabled = currentSlide === countSlides - 1;
-        };
-        const favoriteSliderFunction = () => {
-            favoriteSliderNavButtons.forEach((element => {
-                element.addEventListener("click", changeSlide);
-            }));
-        };
-        favoriteSliderFunction();
-        changeSlide();
-    };
-    initfavoriteSlider();
-    const tabs = (headerSelector, tabSelector, contentSelector, activeClassHeader, activeClassContent) => {
-        const header = document.querySelector(headerSelector);
-        if (!header) return;
-        const tab = header.querySelectorAll(tabSelector);
-        const content = header.querySelectorAll(contentSelector);
-        const toggleButtonRefresh = content => {
-            const count = content.querySelectorAll(".products__item").length;
-            if (count > 4) document.querySelector(".menu-tabs__refresh").classList.remove("hidden"); else document.querySelector(".menu-tabs__refresh").classList.add("hidden");
-        };
-        const hideTabContent = () => {
-            content.forEach((item => {
-                item.classList.remove(activeClassContent);
-            }));
-            tab.forEach((item => {
-                item.classList.remove(activeClassHeader);
-            }));
-        };
-        const showTabContent = (i = 0) => {
-            content[i].classList.add(activeClassContent);
-            tab[i].classList.add(activeClassHeader);
-            toggleButtonRefresh(content[i]);
-        };
-        hideTabContent();
-        showTabContent();
-        header.addEventListener("click", (e => {
-            const target = e.target;
-            if (target.classList.contains(tabSelector.replace(/\./, "")) || target.parentNode.classList.contains(tabSelector.replace(/\./, ""))) tab.forEach(((item, i) => {
-                if (target == item || target.parentNode == item) {
-                    hideTabContent();
-                    showTabContent(i);
-                }
-            }));
-        }));
-    };
-    tabs(".menu-tabs", ".menu-tabs__header-item", ".menu-tabs__content-item", "active", "active");
+    const links = document.querySelectorAll(".menu__link");
+    links.forEach((link => link.addEventListener("click", (() => menuClose()))));
     isWebp();
     addTouchClass();
+    lazyload();
     menuInit();
 })();
