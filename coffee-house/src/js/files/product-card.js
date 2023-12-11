@@ -33,12 +33,28 @@ const init = () => {
       source.srcset = urlsImage.srcset;
     });
 
+    for (let size in product.sizes) {
+      const fieldset = modal.querySelector('.modal-fieldset_size');
+      fieldset.querySelector('input[data-name="size-' + size + '"]').dataset.value = product.sizes[size]['add-price'];
+      fieldset.querySelector('label[data-name="size-' + size + '"]').innerHTML = `<span>${size.toLocaleUpperCase()}</span>${product.sizes[size].size}`;
+
+    }
+
+    for (let additive in product.additives) {
+      const fieldset = modal.querySelector('.modal-fieldset_additives');
+      const key = +additive + 1;
+      fieldset.querySelector('input[data-name="additive-' + key + '"]').dataset.value = product.additives[additive]['add-price'];
+      fieldset.querySelector('label[data-name="additive-' + key + '"]').innerHTML = `<span>${key.toString().toLocaleUpperCase()}</span>${product.additives[additive].name}`;
+    }
+
     calcTotal();
     modal.classList.remove('hidden');
     document.documentElement.classList.add("lock");
   };
 
   const closeModal = (e) => {
+    if (modal.classList.contains('hidden')) return;
+
     if (!e.target.closest('.modal__wrapper') || e.target.closest('.modal__btn')) {
       modal.classList.add('hidden')
       document.documentElement.classList.remove("lock");
@@ -73,7 +89,7 @@ const init = () => {
     modal.querySelector('.modal__total-value span').textContent = totalFormat;
   };
 
-  modal.addEventListener('click', closeModal);
+  document.addEventListener('click', closeModal);
   inputs.forEach(input => input.addEventListener('change', calcTotal));
 }
 
