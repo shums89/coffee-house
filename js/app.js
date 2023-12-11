@@ -158,11 +158,12 @@
         };
         productCards.forEach((card => {
             card.addEventListener("click", (e => {
+                e.preventDefault();
                 const card = e.target.closest(".product-card__link");
                 if (!card && !modal) return;
                 const urlsImage = {
                     src: card.querySelector(".product-card__image img").dataset.src,
-                    srcset: card.querySelector(".product-card__image source").dataset.srcset
+                    srcset: card.querySelector(".product-card__image source") ? card.querySelector(".product-card__image source").dataset.srcset : ""
                 };
                 getProduct(card.querySelector(".product-card__title").textContent, urlsImage);
             }));
