@@ -168,8 +168,6 @@
       margin-right: rem(-5);
       .html-menu & {
         cursor: default;
-        user-select: none;
-        pointer-events: none;
       }
       & svg {
         align-self: start;
@@ -190,6 +188,13 @@
         & svg {
           width: rem(40);
           height: rem(40);
+        }
+      }
+      @media (min-width: em(769)) {
+        .html-menu & {
+          cursor: default;
+          user-select: none;
+          pointer-events: none;
         }
       }
     }
