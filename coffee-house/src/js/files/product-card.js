@@ -1,7 +1,9 @@
 const init = () => {
-  const productCards = document.querySelectorAll('.product-card__link');
+  if (!document.querySelector('.html-menu')) return;
+
   const modal = document.querySelector('.modal');
   const inputs = modal.querySelectorAll('input');
+  const productCards = document.querySelectorAll('.product-card__link');
 
   const getData = async function (url) {
     const response = await fetch(url);
