@@ -2,6 +2,9 @@ import { toggleButtonRefresh } from './tabs.js';
 
 const products = () => {
   const tabs = document.querySelector('.menu-tabs');
+
+  if (!tabs) return;
+
   const btnRefresh = tabs.querySelector('.menu-tabs__refresh');
 
   btnRefresh.addEventListener('click', e => {
