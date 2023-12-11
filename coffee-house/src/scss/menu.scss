@@ -126,9 +126,12 @@
   justify-content: center;
   align-items: center;
   background-color: $bgColorBackdrop;
-
   @include adaptiveValue('padding-left', 40, 16, 768, 380, 1);
   @include adaptiveValue('padding-right', 40, 16, 768, 380, 1);
+
+  &.hidden {
+    display: none;
+  }
   // .modal__wrapper
   &__wrapper {
     display: grid;
@@ -232,6 +235,13 @@
     font-size: rem(16);
     font-weight: 600;
     line-height: 150%;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    .no-touch &:hover {
+      color: $textColorLight;
+      background-color: $bgColorContainer;
+      border: rem(1) solid $bgColorContainer;
+    }
   }
 }
 .modal-fieldset {
@@ -274,6 +284,8 @@
     font-size: rem(16);
     font-weight: 600;
     line-height: 150%;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
 
     & span {
       display: flex;
@@ -283,9 +295,11 @@
       height: rem(30);
       background-color: $borderColorLight;
       border-radius: 50%;
+      transition: all 0.3s ease 0s;
     }
   }
-  &__input:checked ~ &__label {
+  &__input:checked ~ &__label,
+  .no-touch &__label:hover {
     color: $textColorLight;
     background-color: $bgColorContainer;
     border: rem(1) solid $bgColorContainer;
@@ -293,5 +307,10 @@
       color: $mainColor;
       background-color: $bgColorBody;
     }
+  }
+  &__input[type='radio']:checked ~ &__label {
+    cursor: default;
+    user-select: none;
+    pointer-events: none;
   }
 }
