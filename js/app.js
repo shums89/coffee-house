@@ -130,17 +130,21 @@
             if (!response.ok) throw new Error(`Ошибка по адресу "${url}", статус ошибки ${response.status}!`);
             return await response.json();
         };
-        const getProduct = title => {
+        const getProduct = (title, urlsImage) => {
             getData(`./files/products.json`).then((products => {
-                openModal(products.find((product => product.name == title)));
+                openModal(products.find((product => product.name == title)), urlsImage);
             }));
         };
-        const openModal = product => {
+        const openModal = (product, urlsImage) => {
             if (!product) return;
             modal.querySelector(".modal__title").textContent = product.name;
             modal.querySelector(".modal__text").textContent = product.description;
             modal.querySelector(".modal__total-value span").textContent = product.price;
             modal.querySelector(".modal__total-value span").dataset.value = product.price;
+            modal.querySelector(".modal__image img").src = urlsImage.src;
+            modal.querySelectorAll(".modal__image source").forEach((source => {
+                source.srcset = urlsImage.srcset;
+            }));
             calcTotal();
             modal.classList.remove("hidden");
             document.documentElement.classList.add("lock");
@@ -156,7 +160,11 @@
             card.addEventListener("click", (e => {
                 const card = e.target.closest(".product-card__link");
                 if (!card && !modal) return;
-                getProduct(card.querySelector(".product-card__title").textContent);
+                const urlsImage = {
+                    src: card.querySelector(".product-card__image img").dataset.src,
+                    srcset: card.querySelector(".product-card__image source").dataset.srcset
+                };
+                getProduct(card.querySelector(".product-card__title").textContent, urlsImage);
             }));
         }));
         const calcTotal = () => {

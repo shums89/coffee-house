@@ -468,9 +468,9 @@ html {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -1564,6 +1564,11 @@ html {
             transform: translateX(50%) rotate(45deg);
   }
 
+  .header {
+    font-size: 2rem;
+    line-height: 125%;
+  }
+
   .menu__body {
     position: fixed;
     top: 0;
@@ -1597,6 +1602,14 @@ html {
 
   .menu__link_menu {
     margin: 6.25rem auto auto auto;
+    max-width: 9.4375rem;
+    max-height: 3rem;
+    gap: 1rem;
+  }
+
+  .menu__link_menu svg {
+    width: 2.5rem;
+    height: 2.5rem;
   }
 
   .promo__link svg {
