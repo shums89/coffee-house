@@ -9,7 +9,7 @@
     height: rem(44);
     cursor: pointer;
     z-index: 110;
-    border: rem(1) solid $mainColor;
+    border: rem(1) solid $borderColorDark;
     border-radius: 50%;
     margin-left: rem(30);
     &::before,
@@ -42,6 +42,16 @@
       &::after {
         bottom: calc(50% - rem(1));
         transform: translateX(50%) rotate(45deg);
+      }
+    }
+    .no-touch &:hover {
+      color: $textColorLight;
+      background-color: $bgColorContainer;
+      border: rem(1) solid $bgColorContainer;
+      &::before,
+      &::after {
+        border: rem(1) solid $bgColorBody;
+        background-color: $bgColorBody;
       }
     }
   }
