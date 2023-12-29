@@ -2,14 +2,14 @@
 
 .icon-menu {
   display: none;
-  @media (max-width: $tablet) {
+  @media (max-width: em(768)) {
     display: block;
     position: relative;
     width: rem(44);
     height: rem(44);
     cursor: pointer;
-    z-index: 5;
-    border: rem(1) solid $mainColor;
+    z-index: 110;
+    border: rem(1) solid $borderColorDark;
     border-radius: 50%;
     margin-left: rem(30);
     &::before,
@@ -18,16 +18,18 @@
       transition: all 0.3s ease 0s;
       right: 50%;
       position: absolute;
-      width: rem(16);
-      height: rem(2);
+      width: rem(18);
+      height: rem(0);
+      border: rem(1) solid $mainColor;
+      border-radius: rem(1.5);
       background-color: $mainColor;
       transform: translateX(50%);
     }
     &::before {
-      top: calc(50% - rem(4));
+      top: calc(50% - rem(5));
     }
     &::after {
-      bottom: calc(50% - rem(4));
+      bottom: calc(50% - rem(5));
     }
     .menu-open & {
       &::before,
@@ -42,6 +44,16 @@
         transform: translateX(50%) rotate(45deg);
       }
     }
+    .no-touch &:hover {
+      color: $textColorLight;
+      background-color: $bgColorContainer;
+      border: rem(1) solid $bgColorContainer;
+      &::before,
+      &::after {
+        border: rem(1) solid $bgColorBody;
+        background-color: $bgColorBody;
+      }
+    }
   }
 }
 
@@ -53,6 +65,10 @@
   font-weight: 600;
   line-height: 150%;
   min-height: rem(100);
+  @media (max-width: em(768)) {
+    font-size: rem(32);
+    line-height: 125%;
+  }
   // .header__container
   &__container {
   }
@@ -65,6 +81,7 @@
     align-self: start;
     height: auto;
     transition: transform 0.3s ease 0s;
+    z-index: 110;
     .no-touch &:hover {
       transform: scale(1.1);
     }
@@ -76,6 +93,7 @@
   }
 }
 .menu {
+  // position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -89,10 +107,20 @@
   &__body {
     flex: 1 1 auto;
     display: flex;
-    @media (max-width: $tablet) {
-      display: none;
+    @media (max-width: em(768)) {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 100vw;
+      height: 100vh;
+      display: block;
+      background-color: $bgColorBody;
+      transition: all 1.3s ease 0s;
+      z-index: 100;
+      opacity: 0;
       .menu-open & {
-        display: flex;
+        right: 0;
+        opacity: 1;
       }
     }
   }
@@ -106,12 +134,19 @@
     column-gap: rem(32);
     margin-left: rem(40);
     margin-right: rem(40);
+    @media (max-width: em(768)) {
+      flex-direction: column;
+      justify-content: start;
+      row-gap: rem(60);
+      padding-top: rem(160);
+    }
   }
   // .menu__item
   &__item {
   }
   // .menu__link
   &__link {
+    flex: 1 1 100%;
     position: relative;
     padding: rem(4);
     margin-bottom: rem(4);
@@ -135,15 +170,14 @@
     &_menu {
       flex: 0 0 rem(80);
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       gap: rem(10);
+      max-width: rem(82);
       max-height: rem(34);
       margin-right: rem(-5);
       .html-menu & {
         cursor: default;
-        user-select: none;
-        pointer-events: none;
       }
       & svg {
         align-self: start;
@@ -154,6 +188,24 @@
       .html-menu &:after {
         width: calc(100% - rem(8));
         opacity: 1;
+      }
+      @media (max-width: em(768)) {
+        margin: rem(100) auto auto auto;
+        max-width: rem(151);
+        max-height: rem(48);
+        gap: rem(16);
+
+        & svg {
+          width: rem(40);
+          height: rem(40);
+        }
+      }
+      @media (min-width: em(769)) {
+        .html-menu & {
+          cursor: default;
+          user-select: none;
+          pointer-events: none;
+        }
       }
     }
   }

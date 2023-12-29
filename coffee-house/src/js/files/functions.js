@@ -23,6 +23,31 @@ export function addTouchClass() {
   }
 }
 
+/* Ленивая загрузка lazyload */
+export const lazyload = () => {
+  window.addEventListener('load', () => {
+    const lazyObjs = document.querySelectorAll('[data-src], [data-srcset], [data-poster]');
+
+    const updateLazyObject = arr => {
+      arr.forEach(el => {
+        if (el.dataset.src) {
+          el.src = el.dataset.src;
+        }
+        if (el.dataset.srcset) {
+          el.srcset = el.dataset.srcset;
+        }
+        if (el.dataset.poster) {
+          el.poster = el.dataset.poster;
+        }
+      });
+    };
+
+    if (lazyObjs) {
+      updateLazyObject(lazyObjs);
+    }
+  });
+};
+
 //====================================================================
 // Модуль работы с меню (бургер)
 // Сниппет (HTML): menu

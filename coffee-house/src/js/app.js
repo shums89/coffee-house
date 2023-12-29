@@ -13,12 +13,21 @@ flsFunctions.isWebp();
 /* Добавление класса no-touch для HTML, если браузер не поддерживает touch */
 flsFunctions.addTouchClass();
 
+/* Ленивая загрузка lazyload */
+flsFunctions.lazyload();
+
 /* Модуль для работы с меню (Бургер) */
 flsFunctions.menuInit();
 
 // Прочее 
 //====================================================================
 
+/* Табы на странице Menu */
+import "./files/tabs.js";
+
 /* Подключаем файлы со своим кодом */
+import "./files/product-card.js";
+import "./files/products.js";
+import "./files/slider.js";
 import "./files/cross-check.js";
 import "./files/script.js";
